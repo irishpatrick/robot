@@ -1,3 +1,6 @@
 [submodule "sensors/pico-servo"]
 	path = sensors/pico-servo
 	url = https://github.com/irishpatrick/pico-servo
+[submodule "pico-tof"]
+	path = pico-tof
+	url = https://github.com/irishpatrick/pico-tof
