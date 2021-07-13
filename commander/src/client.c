@@ -18,8 +18,25 @@ static void error(char* msg)
     exit(1);
 }
 
+int client_init(client* cdat)
+{
+    pthread_mutex_init(&cdat->comm_mutex, NULL);
+    return 0;
+}
+
+void client_start(client* cdat)
+{
+    pthread_create(&cdat->thread, NULL, client_main, (void*)cdat);
+}
+
+void client_join(client* cdat)
+{
+    pthread_join(cdat->thread, NULL);
+}
+
 void* client_main(void* data)
 {
+    client* cdat = (client*)data;
     int sockfd;
     int n;
     int serverlen;
